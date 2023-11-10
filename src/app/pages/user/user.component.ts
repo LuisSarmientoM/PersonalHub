@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-user',
   standalone: true,
   imports: [RouterOutlet],
   template: '<router-outlet></router-outlet>',
 })
-export class AppComponent {}
+export class UserComponent {}

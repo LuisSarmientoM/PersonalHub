@@ -1,0 +1,17 @@
+<section class="flex items-center justify-center w-full h-screen">
+  <form [formGroup]="form" (ngSubmit)="submit()" class="w-full max-w-sm">
+    <input
+      type="email"
+      formControlName="email"
+      placeholder="ejemplo@correo.com"
+      autocomplete="email"
+    />
+    <input
+      type="password"
+      placeholder="Contraseña"
+      formControlName="password"
+      autocomplete="current-password"
+    />
+    <button class="btn" type="submit">Iniciar sesión</button>
+  </form>
+</section>

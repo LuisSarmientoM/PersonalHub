@@ -1,0 +1,29 @@
+<div class="h-[100dvh] grid grid-cols-[200px,1fr]">
+  <aside class="p-4 flex flex-col shadow">
+    <ul class="flex flex-col gap-1">
+      <li *ngFor="let route of routes">
+        <a
+          class="py-2 px-2 hover:bg-blue-400 hover:text-white transition rounded-md block"
+          [routerLink]="route.path"
+          routerLinkActive="bg-blue-400 text-white shadow-md"
+          [routerLinkActiveOptions]="route.activeOptions ?? { exact: false }"
+          >{{ route.label }}</a
+        >
+      </li>
+    </ul>
+    <span class="flex-1"></span>
+    <ul class="flex flex-col gap-1">
+      <li>
+        <button
+          class="p-2 shadow-md text-left rounded-md w-full"
+          (click)="signOut()"
+        >
+          Cerrar Sesion
+        </button>
+      </li>
+    </ul>
+  </aside>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>
