@@ -12,7 +12,7 @@ import { AuthService } from '@services/auth.service';
 export class LayoutDefaultComponent {
   private readonly authService = inject(AuthService);
 
-  routes = [
+  routeList = [
     {
       label: 'Home',
       path: ['/'],
@@ -22,7 +22,7 @@ export class LayoutDefaultComponent {
     },
     {
       label: 'Usuarios',
-      path: ['/user'],
+      path: ['user'],
     },
   ];
   signOut() {

@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { UserComponent } from '@pages/user/user.component';
 import { LayoutDefaultComponent } from '@shared/components/layouts/default/default.component';
 import { authGuard } from '@shared/guards/auth.guard';
 

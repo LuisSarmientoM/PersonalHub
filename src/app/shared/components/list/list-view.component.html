@@ -1,0 +1,25 @@
+<ng-container *ngFor="let item of paginatedItems">
+  <template
+    [ngTemplateOutlet]="template"
+    [ngTemplateOutletContext]="{ item: item }"
+  ></template>
+</ng-container>
+<div class="flex gap-2">
+  <button
+    (click)="changePage(-1)"
+    class="disabled:opacity-50"
+    [disabled]="currentPage === 1"
+  >
+    Prev
+  </button>
+  <p>
+    {{ currentPage }} of <strong>{{ totalPage }}</strong>
+  </p>
+  <button
+    (click)="changePage(+1)"
+    class="disabled:opacity-50"
+    [disabled]="currentPage === totalPage"
+  >
+    Next
+  </button>
+</div>

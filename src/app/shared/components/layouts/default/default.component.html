@@ -1,7 +1,7 @@
 <div class="h-[100dvh] grid grid-cols-[200px,1fr]">
   <aside class="p-4 flex flex-col shadow">
     <ul class="flex flex-col gap-1">
-      <li *ngFor="let route of routes">
+      <li *ngFor="let route of routeList">
         <a
           class="py-2 px-2 hover:bg-blue-400 hover:text-white transition rounded-md block"
           [routerLink]="route.path"

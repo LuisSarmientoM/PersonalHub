@@ -1,1 +1,6 @@
-<p>list works!</p>
+<!-- <button class="btn">Add items</button> -->
+<app-list [items]="users">
+  <ng-template let-item="item">
+    <app-card [title]="item"></app-card>
+  </ng-template>
+</app-list>
