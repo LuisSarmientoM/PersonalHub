@@ -23,7 +23,8 @@
     "paths": {
       "@services/*": ["./src/app/services/*"],
       "@pages/*": ["./src/app/pages/*"],
-      "@shared/*": ["./src/app/shared/*"]
+      "@shared/*": ["./src/app/shared/*"],
+      "tooltip": ["./projects/tooltip/src/public-api"]
     }
   },
   "angularCompilerOptions": {
