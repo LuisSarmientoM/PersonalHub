@@ -9,6 +9,8 @@ import {
   updateProfile,
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { UserService } from './user.service';
+import { switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +18,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   private readonly auth = inject(Auth);
   private readonly router = inject(Router);
+  private readonly userService = inject(UserService);
 
   get userState() {
     return authState(this.auth);
@@ -28,6 +31,7 @@ export class AuthService {
         email,
         password
       );
+      this.userService.getUser(user.uid);
     } catch (error) {
       console.error('Google login', error);
     }

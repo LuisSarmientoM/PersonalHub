@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '@services/auth.service';
+import { ToolbarComponent } from '@shared/components/toolbar/toolbar.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [ToolbarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

@@ -42,8 +42,6 @@ export default class SignInComponent implements OnInit, OnDestroy {
   submit() {
     this.form.markAllAsTouched();
     if (this.form.valid) {
-      console.log('form is valid');
-
       this.signIn();
     }
   }

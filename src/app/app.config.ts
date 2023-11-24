@@ -1,4 +1,8 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import {
+  APP_INITIALIZER,
+  ApplicationConfig,
+  importProvidersFrom,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -7,26 +11,40 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { AuthService } from '@services/auth.service';
+import { AppService } from '@services/app.service';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { UiService } from '@services/ui.service';
+function initializerFactory(appService: AppService): () => Promise<any> {
+  return () => appService.load();
+}
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializerFactory,
+      deps: [AppService],
+      multi: true,
+    },
     provideRouter(routes),
     provideClientHydration(),
     importProvidersFrom(
       provideFirebaseApp(() =>
         initializeApp({
-          projectId: 'housing-ap',
-          appId: '1:170611004158:web:dafdf1c89da560ffaecbaf',
-          databaseURL: 'https://housing-ap-default-rtdb.firebaseio.com',
-          storageBucket: 'housing-ap.appspot.com',
-          apiKey: 'AIzaSyCvVrJzMJ8ZIogCCs5DFu6saQTCDlcotog',
-          authDomain: 'housing-ap.firebaseapp.com',
-          messagingSenderId: '170611004158',
+          projectId: '',
+          appId: '',
+          databaseURL: '',
+          storageBucket: '',
+          apiKey: '',
+          authDomain: '',
+          messagingSenderId: '',
         })
       )
     ),
     importProvidersFrom(provideAuth(() => getAuth())),
     importProvidersFrom(provideDatabase(() => getDatabase())),
+    provideAnimations(),
     AuthService,
+    UiService,
   ],
 };

@@ -2,38 +2,62 @@ import {
   Component,
   ContentChild,
   Input,
-  OnInit,
-  Output,
   TemplateRef,
   inject,
+  DoCheck,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { CommonModule, NgTemplateOutlet } from '@angular/common';
-import { Router } from 'express';
+import { Router } from '@angular/router';
+
+interface eventEmit {
+  from: number;
+  to: number;
+  total: number;
+}
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, NgTemplateOutlet],
+  imports: [NgTemplateOutlet],
   templateUrl: './list-view.component.html',
 })
-export class ListViewComponent implements OnInit {
-  pageSize = 3;
+export class ListViewComponent implements DoCheck {
+  @Input() pageSize = 3;
+  @Input() items: any[] = [];
   currentPage = 1;
   totalPage = 0;
   paginatedItems: any[] = [];
-  @Input() items: any[] = [];
+  itemFrom = 1;
+  itemTo = this.pageSize;
   @ContentChild(TemplateRef) template: TemplateRef<any> | null = null;
-  @Output() onPaginate = () => {};
+  @Output() pageChange: EventEmitter<eventEmit> = new EventEmitter();
   private router = inject(Router);
-  ngOnInit(): void {
+
+  ngDoCheck(): void {
+    this.checkPagination();
+  }
+
+  checkPagination() {
+    const start = (this.currentPage - 1) * this.pageSize;
+    const end = this.currentPage * this.pageSize;
+    this.paginatedItems = this.items.slice(start, end);
     this.totalPage = Math.ceil(this.items.length / this.pageSize);
-    this.paginatedItems = this.items.slice(0, this.pageSize);
+    this.changePage(0);
   }
 
   changePage(value: number) {
     this.currentPage += value;
     const start = (this.currentPage - 1) * this.pageSize;
     const end = this.currentPage * this.pageSize;
+    this.itemFrom = start + 1;
+    this.itemTo = end > this.items.length ? this.items.length : end;
     this.paginatedItems = this.items.slice(start, end);
+    // this.pageChange.emit({
+    //   from: this.itemFrom,
+    //   to: this.itemTo,
+    //   currentPage: this.currentPage,
+    // });
   }
 }

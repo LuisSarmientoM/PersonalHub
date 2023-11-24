@@ -1,25 +1,38 @@
-<ng-container *ngFor="let item of paginatedItems">
-  <template
-    [ngTemplateOutlet]="template"
-    [ngTemplateOutletContext]="{ item: item }"
-  ></template>
-</ng-container>
-<div class="flex gap-2">
-  <button
-    (click)="changePage(-1)"
-    class="disabled:opacity-50"
-    [disabled]="currentPage === 1"
-  >
-    Prev
-  </button>
-  <p>
-    {{ currentPage }} of <strong>{{ totalPage }}</strong>
-  </p>
-  <button
-    (click)="changePage(+1)"
-    class="disabled:opacity-50"
-    [disabled]="currentPage === totalPage"
-  >
-    Next
-  </button>
+@for (item of paginatedItems; track $index) {
+<template
+  [ngTemplateOutlet]="template"
+  [ngTemplateOutletContext]="{ context: item }"
+></template>
+
+}
+<div class="flex flex-col items-center">
+  <!-- Help text -->
+  <span class="text-sm text-gray-700">
+    Showing
+    <span class="font-semibold text-gray-900">
+      {{ itemFrom }}
+    </span>
+    to
+    <span class="font-semibold text-gray-900">{{ itemTo }}</span>
+    of
+    <span class="font-semibold text-gray-900">{{ items.length }}</span>
+    Entries
+  </span>
+  <!-- Buttons -->
+  <div class="inline-flex mt-2 xs:mt-0">
+    <button
+      class="flex items-center justify-center h-8 px-3 text-sm font-medium text-white bg-gray-800 rounded-s hover:bg-gray-900 disabled:opacity-50"
+      (click)="changePage(-1)"
+      [disabled]="currentPage === 1"
+    >
+      Prev
+    </button>
+    <button
+      (click)="changePage(+1)"
+      [disabled]="currentPage === totalPage"
+      class="flex items-center justify-center h-8 px-3 text-sm font-medium text-white bg-gray-800 border-0 border-gray-700 border-s rounded-e hover:bg-gray-900 disabled:opacity-50"
+    >
+      Next
+    </button>
+  </div>
 </div>

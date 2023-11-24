@@ -1,0 +1,11 @@
+<!-- <button class="btn" (click)="createUser()">Add items</button> -->
+<a routerLink="create">Create</a>
+@defer (when load ) {
+<app-list [items]="users">
+  <ng-template let-childInput="context">
+    <app-card [user]="childInput"></app-card>
+  </ng-template>
+</app-list>
+} @placeholder {
+<article>Loading...</article>
+}

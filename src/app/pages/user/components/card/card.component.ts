@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IUser } from '../../../../models/user.interface';
 
 @Component({
   selector: 'app-card',
@@ -9,5 +10,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './card.component.css',
 })
 export class CardComponent {
-  @Input() title: string = '';
+  @Input() user!: IUser;
 }

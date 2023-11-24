@@ -1,12 +1,14 @@
 <section class="flex items-center justify-center w-full h-screen">
   <form [formGroup]="form" (ngSubmit)="submit()" class="w-full max-w-sm">
     <input
+      class="w-full"
       type="email"
       formControlName="email"
       placeholder="ejemplo@correo.com"
       autocomplete="email"
     />
     <input
+      class="w-full"
       type="password"
       placeholder="Contraseña"
       formControlName="password"

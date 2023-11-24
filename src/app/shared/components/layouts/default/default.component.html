@@ -1,21 +1,31 @@
-<div class="h-[100dvh] grid grid-cols-[200px,1fr]">
-  <aside class="p-4 flex flex-col shadow">
+<div class="h-[100dvh] grid md:grid-cols-[208px,1fr]">
+  <aside
+    class="z-50 flex flex-col p-4 transition-transform shadow bg-zinc-700 md:translate-x-0"
+    [ngClass]="openClass"
+  >
     <ul class="flex flex-col gap-1">
-      <li *ngFor="let route of routeList">
+      @for (route of routeList; track $index) {
+      <li>
         <a
-          class="py-2 px-2 hover:bg-blue-400 hover:text-white transition rounded-md block"
+          class="block px-2 py-2 text-gray-700 transition rounded-md dark:text-white hover:bg-blue-400"
           [routerLink]="route.path"
-          routerLinkActive="bg-blue-400 text-white shadow-md"
+          routerLinkActive="bg-blue-400 text-white shadow-md "
           [routerLinkActiveOptions]="route.activeOptions ?? { exact: false }"
+          *hasRole="route.access"
+          (click)="hideSidebar()"
           >{{ route.label }}</a
         >
       </li>
+      }
+      <!-- <li *ngFor="let route of routeList">
+          >
+        </li> -->
     </ul>
     <span class="flex-1"></span>
     <ul class="flex flex-col gap-1">
       <li>
         <button
-          class="p-2 shadow-md text-left rounded-md w-full"
+          class="w-full p-2 text-left transition border rounded-md dark:text-white dark:border-white hover:dark:bg-zinc-400 hover:dark:text-gray-800 hover:bg-zinc-300"
           (click)="signOut()"
         >
           Cerrar Sesion
@@ -23,7 +33,13 @@
       </li>
     </ul>
   </aside>
-  <main>
+  <main class="grid-cols-1">
     <router-outlet></router-outlet>
   </main>
 </div>
+
+<div
+  [ngClass]="{ 'inset-y-0 w-full': isOpenSidebar, 'w-0': !isOpenSidebar }"
+  class="fixed z-40 transition-all ease-out bg-black bg-opacity-50 md:hidden"
+  (click)="hideSidebar()"
+></div>

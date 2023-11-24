@@ -1,8 +1,7 @@
 import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '@services/auth.service';
-import { Observable } from 'rxjs';
-import { take, tap } from 'rxjs/operators';
+import { Observable, take, tap } from 'rxjs';
 
 export const authGuard = () => {
   const authService = inject(AuthService);
@@ -16,12 +15,14 @@ export const authGuard = () => {
         observer.next(false);
       }
     });
-  });
+  }).pipe(
+    take(1),
+    tap((isLoggedIn) => {
+      if (!isLoggedIn) authService.signOut();
+    })
+  );
   return canActivate;
   // return
-  //   take(1),
-  //   tap((isLoggedIn) => {
-  //     return !!isLoggedIn ? true : router.navigate(['/sign-in']);
-  //   })
+
   // );
 };
