@@ -8,11 +8,26 @@ const routes: Routes = [
     component: FinancialComponent,
     children: [
       {
-        path: '',
+        path: 'resume',
         component: ResumeComponent,
+      },
+      {
+        path: 'accounts',
+        loadComponent: () => import('./accounts/accounts.component'),
+      },
+      {
+        path: 'history',
+        loadComponent: () => import('./history/history.component'),
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'resume',
       },
     ],
   },
+  // ],
+  // },
 ];
 
 export default routes;
