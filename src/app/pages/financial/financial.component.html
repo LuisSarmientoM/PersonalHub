@@ -1,1 +1,40 @@
-<p>financial works!</p>
+<app-toolbar>
+  <a
+    routerLink="resume"
+    class="px-3 py-1 font-bold rounded-md hover:bg-zinc-200 hover:dark:bg-opacity-20"
+    routerLinkActive="bg-zinc-200 drop-shadow-md dark:bg-opacity-20"
+    >Resume</a
+  >
+  <a
+    routerLink="accounts"
+    class="px-3 py-1 font-bold rounded-md hover:bg-zinc-200 hover:dark:bg-opacity-20"
+    routerLinkActive="bg-zinc-200 drop-shadow-md dark:bg-opacity-20"
+    >Budgets</a
+  >
+  <a
+    routerLink="history"
+    class="px-3 py-1 font-bold rounded-md hover:bg-zinc-200 hover:dark:bg-opacity-20"
+    routerLinkActive="bg-zinc-200 drop-shadow-md dark:bg-opacity-20"
+    >History</a
+  >
+</app-toolbar>
+<router-outlet></router-outlet>
+
+<div class="fixed bottom-6 right-6">
+  <button class="p-2 font-bold text-white bg-blue-500 rounded-full">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="block w-8 h-8"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+    </svg>
+  </button>
+</div>
