@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
 import { TooltipDirective } from 'tooltip';
 import { ToolbarComponent } from '@shared/components/toolbar/toolbar.component';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-resume',
   standalone: true,
-  imports: [CurrencyPipe, TooltipDirective, DatePipe, ToolbarComponent],
+  imports: [CurrencyPipe, TooltipDirective, DatePipe, RouterLink],
   templateUrl: './resume.component.html',
   styles: ``,
 })
