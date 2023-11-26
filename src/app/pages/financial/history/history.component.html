@@ -1,1 +1,7 @@
-<p>history works!</p>
+<main class="max-w-xl mx-auto">
+  <app-list [items]="history">
+    <ng-template let-childInput="context">
+      <app-history-item [history]="childInput"></app-history-item>
+    </ng-template>
+  </app-list>
+</main>

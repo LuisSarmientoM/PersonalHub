@@ -1,0 +1,40 @@
+<article class="grid grid-cols-[1fr,100px,1fr] gap-4 mt-4">
+  <div class="leading-4">
+    <h2 class="font-bold">
+      {{ history.budget }}
+    </h2>
+    <p
+      class="inline-block px-2 py-0.5 text-xs text-gray-700 rounded-full dark:text-gray-400 bg-zinc-500"
+    >
+      {{ history.category }}
+    </p>
+    <p class="text-sm text-gray-700 dark:text-gray-400">
+      {{ history.description }}
+    </p>
+  </div>
+  <div class="">
+    <p>{{ history.date | date }}</p>
+  </div>
+
+  <p>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="inline w-4 h-4"
+      [ngClass]="colorType"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"
+      />
+    </svg>
+
+    <span>
+      {{ history.amount | currency }}
+    </span>
+  </p>
+</article>
