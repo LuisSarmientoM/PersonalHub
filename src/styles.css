@@ -17,6 +17,71 @@
 }
 @layer components {
   input {
-    @apply block px-2 py-1 mb-4 border border-gray-300 rounded-md;
+    @apply block px-2 py-1 mb-4 border border-gray-300 rounded-md dark:text-gray-800;
   }
 }
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-calendar {
+  @apply bg-zinc-100 dark:bg-zinc-800 !important;
+}
+mat-calendar .mat-calendar-body-cell-content {
+  @apply border-0 !important;
+}
+mat-calendar .mat-calendar-arrow {
+  @apply fill-white !important;
+}
+
+mat-calendar .mat-calendar-body-cell {
+  @apply rounded-full hover:bg-zinc-300 !important;
+}
+mat-calendar .mat-calendar-body-disabled {
+  @apply text-gray-600 hover:bg-transparent !important;
+}
+mat-calendar
+  .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover
+  > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(
+    .mat-calendar-body-comparison-identical
+  ) {
+  @apply bg-red-400 rounded-none !important;
+}
+mat-calendar .mat-calendar-body-selected,
+mat-calendar .mat-calendar-body-in-range {
+  @apply bg-zinc-400 !important;
+}
+mat-calendar
+  .mat-calendar-body-today:not(.mat-calendar-body-selected):not(
+    .mat-calendar-body-comparison-identical
+  ) {
+  @apply border !important;
+}
+.cdk-visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  outline: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  left: 0;
+}
+/* mat-calendar .mat-mdc-icon-button:disabled {
+  @apply text-gray-600;
+  @apply opacity-30;
+} */
+/* 
+
+   */
