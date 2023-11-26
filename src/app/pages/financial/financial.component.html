@@ -17,6 +17,35 @@
     routerLinkActive="bg-zinc-200 drop-shadow-md dark:bg-opacity-20"
     >History</a
   >
+  <span class="flex-1"></span>
+  <div>
+    <mat-date-range-input [rangePicker]="dateRange">
+      <input
+        (focus)="dateRange.open()"
+        matStartDate
+        [(ngModel)]="startDate"
+        placeholder="Start date"
+      />
+      <input
+        (focus)="dateRange.open()"
+        matEndDate
+        [(ngModel)]="endDate"
+        placeholder="End date"
+      />
+    </mat-date-range-input>
+    <mat-date-range-picker #dateRange></mat-date-range-picker>
+  </div>
+
+  <!-- <mat-datepicker #dateRange> </mat-datepicker> -->
+  <!-- <mat-form-field>
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate placeholder="Start date" />
+      <input matEndDate placeholder="End date" />
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field> -->
 </app-toolbar>
 <router-outlet></router-outlet>
 
