@@ -3,13 +3,13 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 import { TooltipDirective } from 'tooltip';
 
 @Component({
-  selector: 'app-accounts',
+  selector: 'app-budget',
   standalone: true,
   imports: [CommonModule, CurrencyPipe, TooltipDirective],
-  templateUrl: './accounts.component.html',
+  templateUrl: './budget.component.html',
   styles: ``,
 })
-export default class AccountsComponent {
+export default class BudgetComponent {
   budgets = [
     {
       budget: 'Home',

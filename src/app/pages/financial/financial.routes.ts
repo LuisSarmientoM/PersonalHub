@@ -12,8 +12,8 @@ const routes: Routes = [
         component: ResumeComponent,
       },
       {
-        path: 'accounts',
-        loadComponent: () => import('./accounts/accounts.component'),
+        path: 'budget',
+        loadComponent: () => import('./budget/budget.component'),
       },
       {
         path: 'history',
