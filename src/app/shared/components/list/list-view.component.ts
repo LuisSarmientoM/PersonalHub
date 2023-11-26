@@ -24,8 +24,8 @@ interface eventEmit {
   templateUrl: './list-view.component.html',
 })
 export class ListViewComponent implements DoCheck {
-  @Input() pageSize = 3;
-  @Input() items: any[] = [];
+  @Input() pageSize = 10;
+  @Input({ required: true }) items: any[] = [];
   currentPage = 1;
   totalPage = 0;
   paginatedItems: any[] = [];

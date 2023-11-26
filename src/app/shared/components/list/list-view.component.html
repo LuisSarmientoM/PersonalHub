@@ -1,21 +1,24 @@
 @for (item of paginatedItems; track $index) {
-<template
+<ng-template
   [ngTemplateOutlet]="template"
   [ngTemplateOutletContext]="{ context: item }"
-></template>
-
+></ng-template>
 }
 <div class="flex flex-col items-center">
   <!-- Help text -->
-  <span class="text-sm text-gray-700">
+  <span class="text-sm text-gray-700 dark:text-gray-200">
     Showing
-    <span class="font-semibold text-gray-900">
+    <span class="font-semibold text-gray-900 dark:text-gray-400">
       {{ itemFrom }}
     </span>
     to
-    <span class="font-semibold text-gray-900">{{ itemTo }}</span>
+    <span class="font-semibold text-gray-900 dark:text-gray-400">{{
+      itemTo
+    }}</span>
     of
-    <span class="font-semibold text-gray-900">{{ items.length }}</span>
+    <span class="font-semibold text-gray-900 dark:text-gray-400">{{
+      items.length
+    }}</span>
     Entries
   </span>
   <!-- Buttons -->
