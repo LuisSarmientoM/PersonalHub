@@ -116,11 +116,6 @@ export class TooltipComponent {
   }
 
   onAnimationDone(event: AnimationEvent) {
-    console.log({
-      fromState: event.fromState,
-      phaseName: event.phaseName,
-      toState: event.toState,
-    });
     if (event.toState === 'hidden') {
       this.animationDone.next();
     }

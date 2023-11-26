@@ -132,7 +132,6 @@ export class TooltipDirective implements OnDestroy {
     // Start the enter animation
     this.tooltipComponent.instance.show();
     this.tooltipComponent.instance.animationDone.subscribe(() => {
-      console.log('hide tooltip');
       // this.tooltipComponent.destroy();
       this.overlayRef?.detach();
     });
